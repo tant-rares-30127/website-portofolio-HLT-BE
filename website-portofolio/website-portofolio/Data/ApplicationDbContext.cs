@@ -18,5 +18,7 @@ namespace website_portofolio.Data
 
         public DbSet<ContactData> ContactData { get; set; }
 
+        public DbSet<Login> Logins { get; set; }
+
     }
 }
