@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace website_portofolio.Models
 {
@@ -13,6 +14,7 @@ namespace website_portofolio.Models
 
         public string GitHub { get; set; }
 
+        [JsonIgnore]
         public List<CVData> ContactDatas { get; set; }
     }
 }

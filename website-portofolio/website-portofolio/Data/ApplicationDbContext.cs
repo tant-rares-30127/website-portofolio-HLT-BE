@@ -16,5 +16,7 @@ namespace website_portofolio.Data
 
         public DbSet<CVData> CVData { get; set; }
 
+        public DbSet<ContactData> ContactData { get; set; }
+
     }
 }
