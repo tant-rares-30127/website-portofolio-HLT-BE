@@ -34,7 +34,7 @@ namespace website_portofolio.Controllers
             {
                 if (l.Username.Equals(login.Username) && l.Password.Equals(login.Password))
                 {
-                    specificCV = _context.CVData.Include(n => n.ContactData).ToList()[login.Id];
+                    specificCV = _context.CVData.Include(n => n.ContactData).ToList()[l.Id-1];
                     return specificCV;
                 }
             }
