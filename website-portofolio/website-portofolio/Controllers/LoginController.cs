@@ -28,17 +28,18 @@ namespace website_portofolio.Controllers
         public CVData Get([FromBody] Login login)
         {
             var loginsList = _context.Logins.ToList();
-            CVData chestie = null;
+            CVData specificCV = null;
+
             foreach (Login l in loginsList)
             {
                 if (l.Username.Equals(login.Username) && l.Password.Equals(login.Password))
                 {
-                    chestie = _context.CVData.Include(n => n.ContactData).ToList()[login.Id];
-                    return chestie;
+                    specificCV = _context.CVData.Include(n => n.ContactData).ToList()[login.Id];
+                    return specificCV;
                 }
             }
-            return chestie;
-            
+
+            return specificCV;
         }
     }
 }

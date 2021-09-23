@@ -7,8 +7,6 @@ using Microsoft.EntityFrameworkCore;
 using website_portofolio.Data;
 using website_portofolio.Models;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace website_portofolio.Controllers
 {
     [Route("api/[controller]")]
@@ -27,12 +25,9 @@ namespace website_portofolio.Controllers
         [HttpGet("{id}")]
         public CVData GetCVData(int id)
         {
-            // _context.CVData.ToList()[0].ContactData = _context.ContactData.ToList()[0];
+            var specificCVData = _context.CVData.Include(n => n.ContactData).ToList()[id];
 
-            var chestie = _context.CVData.Include(n => n.ContactData).ToList()[id];
-
-
-            return chestie;
+            return specificCVData;
         }
     }
 }
