@@ -24,7 +24,7 @@ namespace website_portofolio.Controllers
         }
 
         // GET api/<LoginController>/5
-        [HttpGet]
+        [HttpPost]
         public CVData Get([FromBody] Login login)
         {
             var loginsList = _context.Logins.ToList();
