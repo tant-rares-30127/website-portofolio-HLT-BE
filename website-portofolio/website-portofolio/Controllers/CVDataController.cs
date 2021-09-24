@@ -29,5 +29,15 @@ namespace website_portofolio.Controllers
 
             return specificCVData;
         }
+
+        [HttpPost]
+        public CVData EditCVPage([FromBody] CVData cvData)
+        {
+            var currentId = cvData.Id;
+            var listCVData = _context.CVData.Include(n => n.ContactData).ToList()[currentId-1];
+            /*listCVData.*/
+            _context.SaveChanges();
+            return cvData;
+        }
     }
 }
