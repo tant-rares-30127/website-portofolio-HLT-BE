@@ -35,7 +35,20 @@ namespace website_portofolio.Controllers
         {
             var currentId = cvData.Id;
             var listCVData = _context.CVData.Include(n => n.ContactData).ToList()[currentId-1];
-            /*listCVData.*/
+            listCVData.Introduction = cvData.Introduction;
+            listCVData.ImgSrc = cvData.ImgSrc;
+            listCVData.Education = cvData.Education;
+            listCVData.WorkExperience = cvData.WorkExperience;
+            listCVData.Languages = cvData.Languages;
+            listCVData.WhatIDo = cvData.WhatIDo;
+            listCVData.WhatIUse = cvData.WhatIUse;
+            listCVData.Projects = cvData.Projects;
+            listCVData.Skills = cvData.Skills;
+            listCVData.ContactData.PhoneNumber = cvData.ContactData.PhoneNumber;
+            listCVData.ContactData.LinkedIn = cvData.ContactData.LinkedIn;
+            listCVData.ContactData.Email = cvData.ContactData.Email;
+            listCVData.ContactData.GitHub = cvData.ContactData.GitHub;
+
             _context.SaveChanges();
             return cvData;
         }
