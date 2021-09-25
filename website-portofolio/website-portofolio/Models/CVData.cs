@@ -15,7 +15,7 @@ namespace website_portofolio.Models
 
         public Education Education { get; set; }
 
-        public string WorkExperience { get; set; }
+        public WorkExperience WorkExperience { get; set; }
 
         public string Languages { get; set; }
 

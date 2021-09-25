@@ -10,11 +10,17 @@ namespace website_portofolio.Models
     {
         public int Id { get; set; }
 
-        public string NameOfTheInstitution { get; set; }
+        public string NameOfTheInstitution1 { get; set; }
 
-        public string Data { get; set; }
+        public string Data1 { get; set; }
 
-        public string Description { get; set; }
+        public string Description1 { get; set; }
+
+        public string NameOfTheInstitution2 { get; set; }
+
+        public string Data2 { get; set; }
+
+        public string Description2 { get; set; }
 
         [JsonIgnore]
         public List<CVData> Educations { get; set; }
