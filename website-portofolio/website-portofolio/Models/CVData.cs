@@ -13,11 +13,11 @@ namespace website_portofolio.Models
 
         public string ImgSrc { get; set; }
 
-        public string Education { get; set; }
+        public Education Education { get; set; }
 
-        public string WorkExperience { get; set; }
+        public WorkExperience WorkExperience { get; set; }
 
-        public string Languages { get; set; }
+        public Languages Languages { get; set; }
 
         public string WhatIDo { get; set; }
 
@@ -28,5 +28,6 @@ namespace website_portofolio.Models
         public string Skills { get; set; }
 
         public ContactData ContactData { get; set; }
+
     }
 }

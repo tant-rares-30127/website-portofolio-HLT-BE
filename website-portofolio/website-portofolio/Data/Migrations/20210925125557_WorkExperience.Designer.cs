@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using website_portofolio.Data;
 
 namespace website_portofolio.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210925125557_WorkExperience")]
+    partial class WorkExperience
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,8 +240,8 @@ namespace website_portofolio.Data.Migrations
                     b.Property<string>("Introduction")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LanguagesId")
-                        .HasColumnType("int");
+                    b.Property<string>("Languages")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Projects")
                         .HasColumnType("nvarchar(max)");
@@ -261,8 +263,6 @@ namespace website_portofolio.Data.Migrations
                     b.HasIndex("ContactDataId");
 
                     b.HasIndex("EducationId");
-
-                    b.HasIndex("LanguagesId");
 
                     b.HasIndex("WorkExperienceId");
 
@@ -321,42 +321,6 @@ namespace website_portofolio.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Educations");
-                });
-
-            modelBuilder.Entity("website_portofolio.Models.Languages", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("LanguageName1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LanguageName2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Speaking1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Speaking2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Understanding1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Understanding2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Writing1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Writing2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Languages");
                 });
 
             modelBuilder.Entity("website_portofolio.Models.Login", b =>
@@ -468,10 +432,6 @@ namespace website_portofolio.Data.Migrations
                         .WithMany("Educations")
                         .HasForeignKey("EducationId");
 
-                    b.HasOne("website_portofolio.Models.Languages", "Languages")
-                        .WithMany("ContactDatas")
-                        .HasForeignKey("LanguagesId");
-
                     b.HasOne("website_portofolio.Models.WorkExperience", "WorkExperience")
                         .WithMany("ContactDatas")
                         .HasForeignKey("WorkExperienceId");
@@ -479,8 +439,6 @@ namespace website_portofolio.Data.Migrations
                     b.Navigation("ContactData");
 
                     b.Navigation("Education");
-
-                    b.Navigation("Languages");
 
                     b.Navigation("WorkExperience");
                 });
@@ -493,11 +451,6 @@ namespace website_portofolio.Data.Migrations
             modelBuilder.Entity("website_portofolio.Models.Education", b =>
                 {
                     b.Navigation("Educations");
-                });
-
-            modelBuilder.Entity("website_portofolio.Models.Languages", b =>
-                {
-                    b.Navigation("ContactDatas");
                 });
 
             modelBuilder.Entity("website_portofolio.Models.WorkExperience", b =>

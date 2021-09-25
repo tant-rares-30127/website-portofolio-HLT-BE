@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using website_portofolio.Data;
 
 namespace website_portofolio.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210925145353_LanguagesMigration")]
+    partial class LanguagesMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -336,23 +338,23 @@ namespace website_portofolio.Data.Migrations
                     b.Property<string>("LanguageName2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Speaking1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Speaking1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Speaking2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Speaking2")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Understanding1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Understanding1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Understanding2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Understanding2")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Writing1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Writing1")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Writing2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Writing2")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

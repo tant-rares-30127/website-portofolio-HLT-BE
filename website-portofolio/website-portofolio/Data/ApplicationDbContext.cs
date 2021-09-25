@@ -20,5 +20,11 @@ namespace website_portofolio.Data
 
         public DbSet<Login> Logins { get; set; }
 
+        public DbSet<Education> Educations { get; set; }
+
+        public DbSet<WorkExperience> WorkExperiences { get; set; }
+
+        public DbSet<Languages> Languages { get; set; }
+
     }
 }

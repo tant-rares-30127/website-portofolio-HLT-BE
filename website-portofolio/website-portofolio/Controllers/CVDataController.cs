@@ -25,7 +25,7 @@ namespace website_portofolio.Controllers
         [HttpGet("{id}")]
         public CVData GetCVData(int id)
         {
-            var specificCVData = _context.CVData.Include(n => n.ContactData).ToList()[id];
+            var specificCVData = _context.CVData.Include(n => n.ContactData).Include(n => n.Education).Include(n => n.WorkExperience).Include(n => n.Languages).ToList()[id];
 
             return specificCVData;
         }
@@ -37,9 +37,30 @@ namespace website_portofolio.Controllers
             var listCVData = _context.CVData.Include(n => n.ContactData).ToList()[currentId-1];
             listCVData.Introduction = cvData.Introduction;
             listCVData.ImgSrc = cvData.ImgSrc;
-            listCVData.Education = cvData.Education;
-            listCVData.WorkExperience = cvData.WorkExperience;
-            listCVData.Languages = cvData.Languages;
+
+            listCVData.Education.NameOfTheInstitution1 = cvData.Education.NameOfTheInstitution1;
+            listCVData.Education.Description1 = cvData.Education.Description1;
+            listCVData.Education.Data1 = cvData.Education.Data1;
+            listCVData.Education.NameOfTheInstitution2 = cvData.Education.NameOfTheInstitution2;
+            listCVData.Education.Description2 = cvData.Education.Description2;
+            listCVData.Education.Data2 = cvData.Education.Data2;
+
+            listCVData.WorkExperience.NameOfTheCompany1 = cvData.WorkExperience.NameOfTheCompany1;
+            listCVData.WorkExperience.Position1 = cvData.WorkExperience.Position1;
+            listCVData.WorkExperience.Period1 = cvData.WorkExperience.Period1;
+            listCVData.WorkExperience.NameOfTheCompany2 = cvData.WorkExperience.NameOfTheCompany2;
+            listCVData.WorkExperience.Position2 = cvData.WorkExperience.Position2;
+            listCVData.WorkExperience.Period2 = cvData.WorkExperience.Period2;
+
+            listCVData.Languages.LanguageName1 = cvData.Languages.LanguageName1;
+            listCVData.Languages.Understanding1 = cvData.Languages.Understanding1;
+            listCVData.Languages.Speaking1 = cvData.Languages.Speaking1;
+            listCVData.Languages.Writing1 = cvData.Languages.Writing1;
+            listCVData.Languages.LanguageName2 = cvData.Languages.LanguageName2;
+            listCVData.Languages.Understanding2 = cvData.Languages.Understanding2;
+            listCVData.Languages.Speaking2 = cvData.Languages.Speaking2;
+            listCVData.Languages.Writing2 = cvData.Languages.Writing2;
+
             listCVData.WhatIDo = cvData.WhatIDo;
             listCVData.WhatIUse = cvData.WhatIUse;
             listCVData.Projects = cvData.Projects;

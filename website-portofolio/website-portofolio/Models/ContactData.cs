@@ -6,6 +6,7 @@ namespace website_portofolio.Models
     public class ContactData
     {
         public int Id { get; set; }
+
         public string PhoneNumber { get; set; }
 
         public string LinkedIn { get; set; }

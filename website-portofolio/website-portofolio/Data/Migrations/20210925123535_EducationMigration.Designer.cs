@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using website_portofolio.Data;
 
 namespace website_portofolio.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210925123535_EducationMigration")]
+    partial class EducationMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,8 +240,8 @@ namespace website_portofolio.Data.Migrations
                     b.Property<string>("Introduction")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("LanguagesId")
-                        .HasColumnType("int");
+                    b.Property<string>("Languages")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Projects")
                         .HasColumnType("nvarchar(max)");
@@ -253,18 +255,14 @@ namespace website_portofolio.Data.Migrations
                     b.Property<string>("WhatIUse")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("WorkExperienceId")
-                        .HasColumnType("int");
+                    b.Property<string>("WorkExperience")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ContactDataId");
 
                     b.HasIndex("EducationId");
-
-                    b.HasIndex("LanguagesId");
-
-                    b.HasIndex("WorkExperienceId");
 
                     b.ToTable("CVData");
                 });
@@ -300,63 +298,18 @@ namespace website_portofolio.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Data1")
+                    b.Property<string>("Data")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Data2")
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameOfTheInstitution1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameOfTheInstitution2")
+                    b.Property<string>("NameOfTheInstitution")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Educations");
-                });
-
-            modelBuilder.Entity("website_portofolio.Models.Languages", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("LanguageName1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LanguageName2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Speaking1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Speaking2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Understanding1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Understanding2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Writing1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Writing2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Languages");
                 });
 
             modelBuilder.Entity("website_portofolio.Models.Login", b =>
@@ -375,36 +328,6 @@ namespace website_portofolio.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Logins");
-                });
-
-            modelBuilder.Entity("website_portofolio.Models.WorkExperience", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("NameOfTheCompany1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NameOfTheCompany2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Period1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Period2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Position1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Position2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("WorkExperiences");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -468,21 +391,9 @@ namespace website_portofolio.Data.Migrations
                         .WithMany("Educations")
                         .HasForeignKey("EducationId");
 
-                    b.HasOne("website_portofolio.Models.Languages", "Languages")
-                        .WithMany("ContactDatas")
-                        .HasForeignKey("LanguagesId");
-
-                    b.HasOne("website_portofolio.Models.WorkExperience", "WorkExperience")
-                        .WithMany("ContactDatas")
-                        .HasForeignKey("WorkExperienceId");
-
                     b.Navigation("ContactData");
 
                     b.Navigation("Education");
-
-                    b.Navigation("Languages");
-
-                    b.Navigation("WorkExperience");
                 });
 
             modelBuilder.Entity("website_portofolio.Models.ContactData", b =>
@@ -493,16 +404,6 @@ namespace website_portofolio.Data.Migrations
             modelBuilder.Entity("website_portofolio.Models.Education", b =>
                 {
                     b.Navigation("Educations");
-                });
-
-            modelBuilder.Entity("website_portofolio.Models.Languages", b =>
-                {
-                    b.Navigation("ContactDatas");
-                });
-
-            modelBuilder.Entity("website_portofolio.Models.WorkExperience", b =>
-                {
-                    b.Navigation("ContactDatas");
                 });
 #pragma warning restore 612, 618
         }
