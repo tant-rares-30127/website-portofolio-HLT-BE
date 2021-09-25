@@ -17,7 +17,7 @@ namespace website_portofolio.Models
 
         public WorkExperience WorkExperience { get; set; }
 
-        public string Languages { get; set; }
+        public Languages Languages { get; set; }
 
         public string WhatIDo { get; set; }
 

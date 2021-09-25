@@ -24,5 +24,7 @@ namespace website_portofolio.Data
 
         public DbSet<WorkExperience> WorkExperiences { get; set; }
 
+        public DbSet<Languages> Languages { get; set; }
+
     }
 }
