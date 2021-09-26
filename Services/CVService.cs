@@ -66,7 +66,8 @@ namespace WebApi.Services
 
         public int Edit(int id,CV cv)
         {
-            _context.CVs.Add(cv);
+            var cvUser = _context.Users.FirstOrDefault(x => x.Id == cv.User.Id);
+
 
             return 0;
         }
