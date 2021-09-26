@@ -1,14 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using WebApi.Services;
-using System.Threading.Tasks;
 using WebApi.Models;
+using WebApi.Services;
 
 namespace WebApi.Controllers
 {
-    [Authorize]
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
@@ -18,22 +15,22 @@ namespace WebApi.Controllers
             _userService = userService;
         }
 
-        [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public async Task<IActionResult> Authenticate([FromBody]AuthenticateModel model)
+        [HttpPost("Authenticate")]
+        public IActionResult Authenticate(AuthenticateRequest model)
         {
-            var user = await _userService.Authenticate(model.Username, model.Password);
+            var response = _userService.Authenticate(model);
 
-            if (user == null)
+            if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });
 
-            return Ok(user);
+            return Ok(response);
         }
 
+        [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public IActionResult GetAll()
         {
-            var users = await _userService.GetAll();
+            var users = _userService.GetAll();
             return Ok(users);
         }
     }
