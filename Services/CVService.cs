@@ -68,7 +68,6 @@ namespace WebApi.Services
         {
             var cvUser = _context.Users.FirstOrDefault(x => x.Id == cv.User.Id);
 
-
             return 0;
         }
     }

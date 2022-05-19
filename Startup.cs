@@ -32,7 +32,7 @@ namespace WebApi
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("PeoplePortalAppConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")));
 
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -67,13 +67,6 @@ namespace WebApi
             app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints => endpoints.MapControllers());
-
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                   Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
-                RequestPath = "/Photos"
-            });
         }
     }
 }

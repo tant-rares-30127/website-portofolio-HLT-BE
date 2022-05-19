@@ -6,9 +6,6 @@
     <Compile Remove="Entities\ContactData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Photos\" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.10" />
